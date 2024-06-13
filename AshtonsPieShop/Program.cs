@@ -1,14 +1,21 @@
+using AshtonsPieShop.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllersWithViews();
+// Services for Dependency Injection
 
+builder.Services.AddScoped<ICategoryRepository, MockCategoryRepository>();
+builder.Services.AddScoped<IPieRepository, MockPieRepository>();
+
+
+builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
-//Middleware Components
+// Middleware Components
 
 app.UseStaticFiles();
 
-if(app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }

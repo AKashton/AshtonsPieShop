@@ -1,14 +1,20 @@
 using AshtonsPieShop.Models;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Services for Dependency Injection
 
-builder.Services.AddScoped<ICategoryRepository, MockCategoryRepository>();
-builder.Services.AddScoped<IPieRepository, MockPieRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IPieRepository, PieRepository>();
 
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<AshtonsPieShopDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration["ConnectionStrings:AshtonsPieShopDbContextConnection"]));
+
 var app = builder.Build();
 
 // Middleware Components
@@ -22,4 +28,5 @@ if (app.Environment.IsDevelopment())
 
 app.MapDefaultControllerRoute();
 
+DbInitializer.Seed(app);
 app.Run();

@@ -10,12 +10,6 @@ namespace AshtonsPieShop.Models
             _ashtonsPieShopDbContext = ashtonsPieShopDbContext;
         }
 
-        public IEnumerable<Category> AllCategories
-        {
-            get
-            {
-                return _ashtonsPieShopDbContext.Categories.OrderBy(p => p.CategoryName);
-            }
-        }
+        public IEnumerable<Category> AllCategories => _ashtonsPieShopDbContext.Categories.OrderBy(p => p.CategoryName);
     }
 }

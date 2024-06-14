@@ -15,12 +15,6 @@ namespace AshtonsPieShop.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        //public IActionResult List()
-        //{
-        //    PieListViewModel piesListViewModel = new PieListViewModel(_pieRepository.AllPies, "All Pies");
-        //    return View(piesListViewModel);
-        //}
-
         public ViewResult List(string category)
         {
             IEnumerable<Pie> pies;

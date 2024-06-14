@@ -2,7 +2,7 @@
 using AshtonsPieShop.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AshtonsPieShop.Components
+namespace AshtonsPieShop.Component
 {
     public class ShoppingCartSummary : ViewComponent
     {

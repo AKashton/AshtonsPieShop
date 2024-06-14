@@ -17,7 +17,7 @@ namespace AshtonsPieShop.Controllers
 
         public IActionResult List()
         {
-            PieListViewModel piesListViewModel = new PieListViewModel(_pieRepository.AllPies, "Cheese cakes");
+            PieListViewModel piesListViewModel = new PieListViewModel(_pieRepository.AllPies, "All Pies");
             return View(piesListViewModel);
         }
 

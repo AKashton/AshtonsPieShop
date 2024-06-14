@@ -15,6 +15,8 @@ builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
+
 builder.Services.AddDbContext<AshtonsPieShopDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration["ConnectionStrings:AshtonsPieShopDbContextConnection"]));
@@ -32,6 +34,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapDefaultControllerRoute();
+app.MapRazorPages();
 
 DbInitializer.Seed(app);
 app.Run();

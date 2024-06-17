@@ -31,6 +31,11 @@ namespace AshtonsPieShop.Models
         {
             return _ashtonsPieShopDbContext.Pies.FirstOrDefault(p => p.PieId == pieid);
         }
+
+        public IEnumerable<Pie> SearchPies(string searchQuery)
+        {
+            return _ashtonsPieShopDbContext.Pies.Where(p => p.Name.Contains(searchQuery));
+        }
     }
 
 }

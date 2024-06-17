@@ -29,7 +29,18 @@ namespace AshtonsPieShop.Controllers.Api
             if (!_pieRepository.AllPies.Any(p => p.PieId == id))
                 return NotFound();
 
-            return Ok(_pieRepository.AllPies.FirstOrDefault(p => p.PieId == id));
+            return Ok(_pieRepository.AllPies.Where(p => p.PieId == id));
+        }
+
+        [HttpPost]
+        public IActionResult SearchPies([FromBody] string searchQuery)
+        {
+            IEnumerable<Pie> pies = new List<Pie>();
+            if(!string.IsNullOrEmpty(searchQuery))
+            {
+                pies = _pieRepository.SearchPies(searchQuery);
+            }
+            return new JsonResult(pies);
         }
     }
 }

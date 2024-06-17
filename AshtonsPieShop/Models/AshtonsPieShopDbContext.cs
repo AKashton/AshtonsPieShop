@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace AshtonsPieShop.Models
 {
-    public class AshtonsPieShopDbContext : DbContext
+    public class AshtonsPieShopDbContext : IdentityDbContext
     {
         public AshtonsPieShopDbContext(DbContextOptions<AshtonsPieShopDbContext>
             options) : base(options)

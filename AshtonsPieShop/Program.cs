@@ -5,7 +5,7 @@ using AshtonsPieShop.Data;
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("AshtonsPieShopContextConnection") ?? throw new InvalidOperationException("Connection string 'AshtonsPieShopContextConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString("AshtonsPieShopDbContextConnection") ?? throw new InvalidOperationException("Connection string 'AshtonsPieShopDbContextConnection' not found.");
 
 // Services for Dependency Injection
 builder.Services.AddDbContext<AshtonsPieShopDbContext>(options =>

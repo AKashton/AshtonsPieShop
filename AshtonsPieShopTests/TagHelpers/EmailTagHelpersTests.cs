@@ -1,11 +1,7 @@
 ﻿using AshtonsPieShop.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AshtonsPieShopTests.TagHelpers
 {
@@ -14,6 +10,7 @@ namespace AshtonsPieShopTests.TagHelpers
         [Fact]
         public void Generates_Email_Link()
         {
+            // arrange 
             EmailTagHelper emailTagHelper = new EmailTagHelper() { Address = "test@bethanyspieshop.com", Content = "Email" }; ;
 
             var tagHelperContext = new TagHelperContext(
@@ -29,6 +26,8 @@ namespace AshtonsPieShopTests.TagHelpers
             // Act
             emailTagHelper.Process(tagHelperContext, tagHelperOutput);
 
+
+            // Assert
             Assert.Equal("Email", tagHelperOutput.Content.GetContent());
             Assert.Equal("a", tagHelperOutput.TagName);
             Assert.Equal("mailto:test@bethanyspieshop.com", tagHelperOutput.Attributes[0].Value);

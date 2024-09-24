@@ -22,7 +22,7 @@ namespace AshtonsPieShop.Controllers
 
             if (string.IsNullOrEmpty(category))
             {
-                pies = _pieRepository.AllPies.OrderBy(p => p.PieId);
+                pies = _pieRepository.AllPies.OrderBy(p => p.Name);
                 currentCategory = "All pies";
             }
             else

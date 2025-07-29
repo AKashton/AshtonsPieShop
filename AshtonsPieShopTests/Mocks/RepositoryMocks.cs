@@ -163,7 +163,7 @@ namespace AshtonsPieShopTests.Mocks
             var mockPieRepository = new Mock<IPieRepository>();
             mockPieRepository.Setup(repo => repo.AllPies).Returns(pies);
             mockPieRepository.Setup(repo => repo.PiesOfTheWeek).Returns(pies.Where(p => p.IsPieOfTheWeek));
-            mockPieRepository.Setup(repo => repo.GetPieById(It.IsAny<int>())).Returns(pies[0]);
+            mockPieRepository.Setup(repo => repo.GetPieById(It.IsAny<int>())).Returns((int id) => (id >= 0 && id <= pies.Count) ? pies[id] : null);
             return mockPieRepository;
         }
 
